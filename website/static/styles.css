@@ -1,0 +1,13 @@
+body {
+    background: #fff450;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title_img {
+    width: 500px;
+}

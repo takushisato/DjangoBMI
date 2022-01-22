@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h2>詳細</h2>
+        <ol>
+            {% for data in datas %}
+            <li><p>{{ data.user.updated }}</p></li>
+            <li><p>{{ data.user.name }}</p></li>
+            <li><p>{{ data.height }}</p></li>
+            <li><p>{{ data.weight }}</p></li>
+            {% endfor %}
+        </ol>
+        <!-- BMI＝体重(kg) ÷ {身長(m) Ｘ 身長(m)} -->
+        <br>
+        <br>
+        <a href="/edit">編集または削除</a>
+{% endblock %}

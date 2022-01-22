@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+        <h2>記事一覧</h2>
+        <ol>
+            {% for user in users %}
+            <li><a href="{% url 'show' pk=user.pk %}">{{ user.name }}</a></li>
+            {% endfor %}
+        </ol>
+        <a href="/create">新規投稿</a>
+{% endblock %}
