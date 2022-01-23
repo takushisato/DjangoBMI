@@ -13,10 +13,10 @@ class IndexView(TemplateView):
 
 class ShowView(TemplateView):
      def get(self, request, *args, **kwargs):
-            datas = Userdate.objects.order_by('-id')
-            return render(request, 'show.html', {
-                'datas':datas
-            })
+        datas = Userdate.objects.order_by('-id')
+        return render(request, 'show.html', {
+            'datas':datas
+        })
 
 class CreateView(TemplateView):
     template_name = "create.html"
