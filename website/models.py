@@ -46,14 +46,6 @@ class Userdate(models.Model):
     def __str__(self):
         return str(self.weight) + '/' + str(self.height)
 
-    @property
-    def bmi(self):
-        # BMIの計算から小数第二位の四捨五入
-        ans = self.weight / (self.height / 100)**2
-        a = round(ans, 1)
-        # リターン
-        return str(a)
-
     # userdate.user = User.objects.first()
     # userdate.user = User.objects.get(pk=4)
     # https://qiita.com/uenosy/items/54136aff0f6373957d22 テーブル同士の連結にはまった。参考サイトはここ
