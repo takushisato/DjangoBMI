@@ -48,11 +48,9 @@ class Userdate(models.Model):
 
     @property
     def bmi(self):
-        # BMIの計算から小数第二位の四捨五入
-        ans = self.weight / (self.height / 100)**2
-        a = round(ans, 1)
-        # リターン
-        return str(a)
+        calculation = self.weight / (self.height / 100)**2
+        ans = round(calculation, 1)
+        return str(ans)
 
     # userdate.user = User.objects.first()
     # userdate.user = User.objects.get(pk=4)

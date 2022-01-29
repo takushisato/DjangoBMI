@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-        <h2>詳細</h2>
-        <ol>
+        <ol style="list-style:none">
             {% for data in datas %}
+            <li style="font-size: 25px;"><p>{{ data.user.name }}</p></li>
             <li><p>{{ data.user.updated }}</p></li>
-            <li><p>{{ data.user.name }}</p></li>
-            <li><p>{{ data.height }}</p></li>
-            <li><p>{{ data.weight }}</p></li>
-            <li><p>{{ data.bmi }}</p></li>
+            <li><p>身長：{{ data.height }}</p></li>
+            <li><p>体重：{{ data.weight }}</p></li>
+            <li><p>BMI：{{ data.bmi }}</p></li>
             {% endfor %}
         </ol>
         <!-- BMI＝体重(kg) ÷ {身長(m) Ｘ 身長(m)} -->

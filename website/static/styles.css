@@ -3,6 +3,10 @@ body {
     text-align: center;
 }
 
+.create_time {
+    list-style: none;
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
