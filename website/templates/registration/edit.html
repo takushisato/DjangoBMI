@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-        <p>日付を選択する</p>
-        <br>
-        <p>体重:</p>
-        <br>
-        <!-- 削除の機能が欲しい -->
-        <a href="/index">投稿する</a>
-        <br>
-        <a href="/index">投稿を削除</a>
+<h2>会員ページ</h2>
+<p>{{ user }}さん、こんにちは！</p>
+<p><a href="{% url 'logout' %}">ログアウト</a></p>
+
+<p>日付を選択する</p>
+<br>
+<p>体重:</p>
+<br>
+<!-- 削除の機能が欲しい -->
+<a href="/index">投稿する</a>
+<br>
+<a href="/index">投稿を削除</a>
 {% endblock %}

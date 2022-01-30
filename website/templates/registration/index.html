@@ -2,11 +2,7 @@
 {% block content %}
 <h2>会員ページ</h2>
 <p>{{ user }}さん、こんにちは！</p>
-
-
 <p><a href="{% url 'logout' %}">ログアウト</a></p>
-<p><a href="{% url 'password_change' %}">パスワードの変更henkou</a></p>
-<p><a href="{% url 'password_reset' %}">パスワードを忘れた場合</a></p>
 
 <h2>記事一覧</h2>
 <ul>
@@ -14,7 +10,7 @@
     <li style="list-style:none"><a href="{% url 'show' pk=user.pk %}">{{ user.created }}</a></li>
     {% endfor %}
 </ul>
-<a href="/registration/create">新規投稿</a>
+<a href="/create">新規投稿</a>
 {% endblock %}
 
 <!-- CSSの適応について後で確認 -->

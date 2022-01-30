@@ -7,14 +7,14 @@ from .models import User, Userdate
 class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         users = User.objects.order_by('-id')
-        return render(request, 'index.html', {
+        return render(request, 'registration/index.html', {
             'users':users
         })
 
 class ShowView(TemplateView):
      def get(self, request, *args, **kwargs):
         datas = Userdate.objects.order_by('-id')
-        return render(request, 'show.html', {
+        return render(request, 'registration/show.html', {
             'datas':datas
         })
 
