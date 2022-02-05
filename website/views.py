@@ -2,7 +2,8 @@ import pkgutil
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import timezone
-from .models import User, Userdate
+from .models import Userdate
+from django.contrib.auth.models import User
 
 class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
