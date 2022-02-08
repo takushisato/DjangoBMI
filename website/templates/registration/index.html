@@ -6,11 +6,15 @@
 
 <h2>記事一覧</h2>
 <ul>
-    {% for user in users %}
-    <li style="list-style:none"><a href="{% url 'show' pk=user.pk %}">{{ user.created }}</a></li>
+    {% for userdate in userdates %}
+    {% if user.id == userdate.user.id %}
+    <li style="list-style:none"><a href="{% url 'show' userdate.pk %}">{{ userdate.bmi }}</a></li>
+    {% endif %}
     {% endfor %}
 </ul>
 <a href="/create">新規投稿</a>
 {% endblock %}
 
 <!-- CSSの適応について後で確認 -->
+
+<!-- http://shincode.info/2021/05/06/how-to-create-mypage-on-django/ 参考 -->

@@ -1,22 +1,20 @@
-import pkgutil
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.utils import timezone
 from .models import Userdate
 from django.contrib.auth.models import User
 
 class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
-        users = User.objects.order_by('-id')
+        userdates = Userdate.objects.all()
         return render(request, 'registration/index.html', {
-            'users':users
+            'userdates':userdates
         })
 
 class ShowView(TemplateView):
      def get(self, request, *args, **kwargs):
-        datas = Userdate.objects.order_by('-id')
+        userdates = Userdate.objects.get(id=self.kwargs['pk'])
         return render(request, 'registration/show.html', {
-            'datas':datas
+            'userdates':userdates
         })
 
 class CreateView(TemplateView):

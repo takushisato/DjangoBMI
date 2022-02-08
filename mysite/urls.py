@@ -16,20 +16,9 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
-from website.views import IndexView, ShowView, CreateView, EditView
-
-IndexView = TemplateView.as_view(template_name="registration/index.html")
-ShowView = TemplateView.as_view(template_name="registration/show.html")
-CreateView = TemplateView.as_view(template_name="registration/create.html")
-EditView = TemplateView.as_view(template_name="registration/edit.html")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login_required(IndexView)),
-    path('show/<int:pk>/', login_required(ShowView)),
-    path('create/', login_required(CreateView)),
-    path('edit/', login_required(EditView)),
+    path('', include("website.urls")),
     path('', include("django.contrib.auth.urls")),
 ]
