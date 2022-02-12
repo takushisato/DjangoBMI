@@ -1,8 +1,11 @@
+from dataclasses import field
 from django import forms
+from .models import Userdate
 
-class UserdateForm(forms.Form):
+class UserdateForm(forms.ModelForm):
 
-    height = forms.FloatField(label = '身長')
-    weight = forms.FloatField(label = '体重')
+    class Meta:
+        model = Userdate
+        fields = ('height', 'weight',)
 
 
