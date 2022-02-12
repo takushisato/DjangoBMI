@@ -3,11 +3,14 @@
 <h2>会員ページ</h2>
 <p>{{ user }}さん、こんにちは！</p>
 <p><a href="{% url 'logout' %}">ログアウト</a></p>
-<p>日付を選択する</p>
-<br>
-<p>体重：</p>
-<p>身長：</p>
-<br>
-<br>
-<a href="/">投稿する</a>
+
+<h2>新規投稿</h2>
+<br><br>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="投稿する">
+</form>
+
 {% endblock %}

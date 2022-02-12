@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
         <ul style="list-style:none">
-            <li><p>身長：{{ userdate.height }}</p></li>
-            <li><p>体重：{{ userdate.weight }}</p></li>
-            <li><p>BMI：{{ userdate.bmi }}</p></li>
+            <li><p>身長：{{ userdates.height }}</p></li>
+            <li><p>体重：{{ userdates.weight }}</p></li>
+            <li><p>BMI：{{ userdates.bmi }}</p></li>
             <br><br>
         </ul>
-
+        <!-- userdatesと複数系になる！ここ１時間半ハマった・・・ -->
         <br>
         <br>
         <a href="/edit">編集または削除</a>
