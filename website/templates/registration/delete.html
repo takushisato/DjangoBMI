@@ -4,14 +4,17 @@
 <p>{{ user }}さん、こんにちは！</p>
 <p><a href="{% url 'logout' %}">ログアウト</a></p>
 
+<h2>{{ userdates.height }}</h2>
+<h2>{{ userdates.weight }}</h2>
+<h2>{{ userdates.bmi }}</h2>
+
+<p>削除してもよろしいでしょうか？</p>
+
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="投稿する">
+    <button type="submit">削除する</button>
 </form>
 
-<!-- 削除の機能が欲しい -->
-<a href="/index">投稿する</a>
-<br>
-<a href="/index">投稿を削除</a>
+<br><br>
+
 {% endblock %}

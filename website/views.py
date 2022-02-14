@@ -42,4 +42,42 @@ class CreateView(TemplateView):
         })
 
 class EditView(TemplateView):
-    template_name = "edit.html"
+    def get(self, request, *args, **kwargs):
+        userdates = Userdate.objects.get(id=self.kwargs['pk'])
+        form = UserdateForm(
+            request.POST or None,
+            initial = {
+                'height': userdates.height,
+                'weight': userdates.weight,
+            }
+        )
+
+        return render(request, 'registration/edit.html', {
+            'form': form
+        })
+    
+    def post(self, request, *args, **kwargs):
+        form = UserdateForm(request.POST or None)
+
+        if form.is_valid():
+            userdate = Userdate.objects.get(id=self.kwargs['pk'])
+            userdate.height = form.cleaned_data['height']
+            userdate.weight = form.cleaned_data['weight']
+            userdate.save()
+            return redirect('show', self.kwargs['pk'])
+
+        return render(request, 'registration/create.html', {
+            'form': form
+        })
+
+class DeleteView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        userdates = Userdate.objects.get(id=self.kwargs['pk'])
+        return render(request, 'registration/delete.html', {
+            'userdates': userdates
+        })
+
+    def post(self, request, *args, **kwargs):
+        userdates = Userdate.objects.get(id=self.kwargs['pk'])
+        userdates.delete()
+        return redirect('registration/index')

@@ -9,5 +9,6 @@
         <!-- userdatesと複数系になる！ここ１時間半ハマった・・・ -->
         <br>
         <br>
-        <a href="/edit">編集または削除</a>
+        <a href="{% url 'edit' userdates.id %}">編集する</a>
+        <a href="{% url 'delete' userdates.id %}">削除する</a>
 {% endblock %}
