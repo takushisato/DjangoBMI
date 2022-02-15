@@ -81,3 +81,5 @@ class DeleteView(TemplateView):
         userdates = Userdate.objects.get(id=self.kwargs['pk'])
         userdates.delete()
         return redirect('registration/index')
+
+# 次会User認証から
