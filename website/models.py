@@ -1,3 +1,4 @@
+from re import A
 from django.db import models
 from django.conf import settings
 
@@ -21,7 +22,23 @@ class Userdate(models.Model):
     def bmi(self):
         calculation = self.weight / (self.height / 100)**2
         ans = round(calculation, 1)
-        return str(ans)
+
+        if ans > 40:
+            comment = "めちゃくちゃデブやで！"
+        elif ans > 30:
+            comment = "デブ！"
+        elif ans > 25:
+            comment = "ちょっと太り気味よ"
+        elif ans > 18.5:
+            comment = "ナイススタイル！！その状態を維持して！！"            
+        elif ans > 16:
+            comment = "スレンダーだね"
+        else:
+            comment = "痩せすぎよ！"
+
+        return [str(ans), str(comment)]
+
+
 
     # userdate.user = User.objects.first()
     # userdate.user = User.objects.get(pk=4)
