@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>新規会員登録</h2>
+<br><br>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="投稿する">
+</form>
+
+{% endblock %}

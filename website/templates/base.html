@@ -13,5 +13,9 @@
         <a href="/"><img src="{% static 'title.png' %}" / class="title_img"></a>
         {% block content %}{% endblock %}
     </div>
+    <br><br>
+    {% if request.user.is_anonymous %}
+    <a href="{% url 'usernew' %}">新規会員登録はこちら</a>
+    {% endif %}
 </body>
 </html>

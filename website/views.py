@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Userdate
 from django.contrib.auth.models import User
-from .forms import UserdateForm
-
+from .forms import UserdateForm, UserForm
+ 
 class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         userdates = Userdate.objects.all()
@@ -80,6 +80,26 @@ class DeleteView(TemplateView):
     def post(self, request, *args, **kwargs):
         userdates = Userdate.objects.get(id=self.kwargs['pk'])
         userdates.delete()
-        return redirect('registration/index')
+        return redirect('registration/index.html')
 
-# 次会User認証から
+class UserCreateView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        form = UserForm(request.POST or None)
+        return render(request, 'usercreate.html', {
+            'form': form
+        })
+    
+    def post(self, request, *args, **kwargs):
+        form = UserForm(request.POST or None)
+
+        if form.is_valid():
+            user = User()
+            user.username = form.cleaned_data['username']
+            user.email = form.cleaned_data['email']
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('/login', user.id)
+
+        return render(request, '/login', {
+            'form': form
+        })
