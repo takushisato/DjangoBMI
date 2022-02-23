@@ -1,11 +1,12 @@
 from distutils.command.clean import clean
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from .models import Userdate
 from django.contrib.auth.models import User
 from .forms import UserdateForm, UserForm
  
-class IndexView(TemplateView):
+class IndexView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         userdates = Userdate.objects.all()
         return render(request, 'registration/index.html', {
@@ -80,7 +81,7 @@ class DeleteView(TemplateView):
     def post(self, request, *args, **kwargs):
         userdates = Userdate.objects.get(id=self.kwargs['pk'])
         userdates.delete()
-        return redirect('registration/index.html')
+        return redirect('index')
 
 class UserCreateView(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -98,8 +99,13 @@ class UserCreateView(TemplateView):
             user.email = form.cleaned_data['email']
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('/login', user.id)
+            return redirect('usercompleted')
 
-        return render(request, '/login', {
-            'form': form
-        })
+        return redirect('error')
+
+class UserCompletedView(TemplateView):
+    template_name = "usercompleted.html"
+
+
+class UserCreateErrorView(TemplateView):
+    template_name = "error.html"

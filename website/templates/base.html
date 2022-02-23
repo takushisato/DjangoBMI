@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="/"><img src="{% static 'title.png' %}" / class="title_img"></a>
+        <a href="{% url 'index' %}"><img src="{% static 'title.png' %}" class="title_img"></a>
         {% block content %}{% endblock %}
     </div>
     <br><br>
