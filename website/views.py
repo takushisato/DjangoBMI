@@ -1,4 +1,5 @@
 from distutils.command.clean import clean
+import email
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -109,3 +110,15 @@ class UserCompletedView(TemplateView):
 
 class UserCreateErrorView(TemplateView):
     template_name = "error.html"
+
+class UserDeleteView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(username = request.user) 
+        return render(request, 'registration/userdelete.html', {
+            'user': user
+        })
+
+    def post(self, request, *args, **kwargs):
+        user = User.objects.get(username = request.user)
+        user.delete()
+        return redirect('index')

@@ -1,6 +1,6 @@
 # from unicodedata import name
 from django.urls import path
-from .views import IndexView, ShowView, CreateView, EditView, DeleteView, UserCreateView, UserCompletedView, UserCreateErrorView
+from .views import IndexView, ShowView, CreateView, EditView, DeleteView, UserCreateView, UserCompletedView, UserCreateErrorView, UserDeleteView
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('usernew/', UserCreateView.as_view(), name="usernew"),
     path('usernew/usercompleted', UserCompletedView.as_view(), name="usercompleted"),
     path('usernew/error', UserCreateErrorView.as_view(), name="error"),
+    path('userdelete', UserDeleteView.as_view(), name="userdelete"),
 ]
