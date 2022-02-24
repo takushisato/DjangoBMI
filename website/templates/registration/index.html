@@ -8,7 +8,7 @@
 <ul>
     {% for userdate in userdates %}
     {% if user.id == userdate.user.id %}
-    <li style="list-style:none"><a href="{% url 'show' userdate.id %}">{{ userdate.bmi.0 }}</a></li>
+    <li style="list-style:none"><a href="{% url 'show' userdate.id %}">{{ userdate.created_date }}</a></li>
     {% endif %}
     {% endfor %}
 </ul>

@@ -5,11 +5,13 @@
             <li><p>体重：{{ userdates.weight }}</p></li>
             <li><p>BMI：{{ userdates.bmi.0 }}</p></li>
             <br><br>
+            <li><p>公開日：{{ userdates.created_date }}</p></li>
+            <li><p>更新日：{{ userdates.updated_date }}</p></li>
+            <br><br>
         </ul>
         <br>
         <br>
         <p>{{ userdates.bmi.1 }}</p>
-        <!-- userdatesと複数系になる！ここ１時間半ハマった・・・ -->
         <br>
         <br>
         <a href="{% url 'edit' userdates.id %}">編集する</a>

@@ -1,6 +1,7 @@
 from re import A
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 
 class Userdate(models.Model):
     user = models.ForeignKey(
@@ -14,6 +15,10 @@ class Userdate(models.Model):
     weight = models.FloatField(
         blank=False,
         null=False)
+    
+    created_date = models.DateTimeField(default=timezone.now)
+
+    updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
         return str(self.weight) + '/' + str(self.height)
@@ -30,7 +35,7 @@ class Userdate(models.Model):
         elif ans > 25:
             comment = "ちょっと太り気味よ"
         elif ans > 18.5:
-            comment = "ナイススタイル！！その状態を維持して！！"            
+            comment = "ナイススタイル！！　その状態を維持して！！"            
         elif ans > 16:
             comment = "スレンダーだね"
         else:

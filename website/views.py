@@ -9,7 +9,7 @@ from .forms import UserdateForm, UserForm
  
 class IndexView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
-        userdates = Userdate.objects.all()
+        userdates = Userdate.objects.order_by('created_date').reverse()
         return render(request, 'registration/index.html', {
             'userdates':userdates
         })
