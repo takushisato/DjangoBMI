@@ -4,21 +4,15 @@ from django.conf import settings
 from django.utils import timezone
 
 class Userdate(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    height = models.FloatField(
-        blank=False,
-        null=False)
+    height = models.FloatField('身長', blank=False, null=False)
 
-    weight = models.FloatField(
-        blank=False,
-        null=False)
+    weight = models.FloatField('体重', blank=False, null=False)
     
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField('', default=timezone.now)
 
-    updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
+    updated_date = models.DateTimeField('', auto_now=True, blank=True, null=True)
 
     def __str__(self):
         return str(self.weight) + '/' + str(self.height)
